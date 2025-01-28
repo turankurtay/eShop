@@ -3,6 +3,7 @@
 builder.AddServiceDefaults();
 builder.AddApplicationServices();
 builder.Services.AddProblemDetails();
+builder.Services.AddValidatorsFromAssembly(typeof(CompleteOrderCommandValidator).Assembly);
 
 var withApiVersioning = builder.Services.AddApiVersioning();
 

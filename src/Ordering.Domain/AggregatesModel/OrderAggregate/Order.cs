@@ -183,4 +183,15 @@ public class Order
     }
 
     public decimal GetTotal() => _orderItems.Sum(o => o.Units * o.UnitPrice);
+
+    public virtual void SetOrderStatusToComplete()
+    {
+        if (OrderStatus != OrderStatus.Shipped)
+        {
+            throw new InvalidOperationException("Sipariş henüz kargo sürecindedir.");
+        }
+
+        OrderStatus = OrderStatus.Complete;
+    }
+
 }
